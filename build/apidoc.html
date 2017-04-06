@@ -1,0 +1,2331 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/caolan/forms#readme"
+
+    >forms (v1.3.0)</a>
+</h1>
+<h4>An easy way to create, parse, and validate forms</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.forms">module forms</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.create">
+            function <span class="apidocSignatureSpan">forms.</span>create
+            <span class="apidocSignatureSpan">(fields, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.tag">
+            function <span class="apidocSignatureSpan">forms.</span>tag
+            <span class="apidocSignatureSpan">(tagName, attrsMap, content, contentIsEscaped)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">forms.</span>fields</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">forms.</span>render</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">forms.</span>validators</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">forms.</span>widgets</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.forms.fields">module forms.fields</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.array">
+            function <span class="apidocSignatureSpan">forms.fields.</span>array
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.boolean">
+            function <span class="apidocSignatureSpan">forms.fields.</span>boolean
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.date">
+            function <span class="apidocSignatureSpan">forms.fields.</span>date
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.email">
+            function <span class="apidocSignatureSpan">forms.fields.</span>email
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.number">
+            function <span class="apidocSignatureSpan">forms.fields.</span>number
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.object">
+            function <span class="apidocSignatureSpan">forms.fields.</span>object
+            <span class="apidocSignatureSpan">(fields, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.password">
+            function <span class="apidocSignatureSpan">forms.fields.</span>password
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.string">
+            function <span class="apidocSignatureSpan">forms.fields.</span>string
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.tel">
+            function <span class="apidocSignatureSpan">forms.fields.</span>tel
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.fields.url">
+            function <span class="apidocSignatureSpan">forms.fields.</span>url
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.forms.render">module forms.render</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.render.div">
+            function <span class="apidocSignatureSpan">forms.render.</span>div
+            <span class="apidocSignatureSpan">(name, field, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.render.li">
+            function <span class="apidocSignatureSpan">forms.render.</span>li
+            <span class="apidocSignatureSpan">(name, field, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.render.p">
+            function <span class="apidocSignatureSpan">forms.render.</span>p
+            <span class="apidocSignatureSpan">(name, field, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.render.table">
+            function <span class="apidocSignatureSpan">forms.render.</span>table
+            <span class="apidocSignatureSpan">(name, field, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.forms.tag">module forms.tag</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.tag.tag">
+            function <span class="apidocSignatureSpan">forms.</span>tag
+            <span class="apidocSignatureSpan">(tagName, attrsMap, content, contentIsEscaped)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.tag.attrs">
+            function <span class="apidocSignatureSpan">forms.tag.</span>attrs
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.forms.validators">module forms.validators</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.alphanumeric">
+            function <span class="apidocSignatureSpan">forms.validators.</span>alphanumeric
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.color">
+            function <span class="apidocSignatureSpan">forms.validators.</span>color
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.date">
+            function <span class="apidocSignatureSpan">forms.validators.</span>date
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.digits">
+            function <span class="apidocSignatureSpan">forms.validators.</span>digits
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.email">
+            function <span class="apidocSignatureSpan">forms.validators.</span>email
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.integer">
+            function <span class="apidocSignatureSpan">forms.validators.</span>integer
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.matchField">
+            function <span class="apidocSignatureSpan">forms.validators.</span>matchField
+            <span class="apidocSignatureSpan">(match_field, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.matchValue">
+            function <span class="apidocSignatureSpan">forms.validators.</span>matchValue
+            <span class="apidocSignatureSpan">(valueGetter, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.max">
+            function <span class="apidocSignatureSpan">forms.validators.</span>max
+            <span class="apidocSignatureSpan">(val, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.maxlength">
+            function <span class="apidocSignatureSpan">forms.validators.</span>maxlength
+            <span class="apidocSignatureSpan">(val, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.min">
+            function <span class="apidocSignatureSpan">forms.validators.</span>min
+            <span class="apidocSignatureSpan">(val, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.minlength">
+            function <span class="apidocSignatureSpan">forms.validators.</span>minlength
+            <span class="apidocSignatureSpan">(val, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.range">
+            function <span class="apidocSignatureSpan">forms.validators.</span>range
+            <span class="apidocSignatureSpan">(min, max, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.rangelength">
+            function <span class="apidocSignatureSpan">forms.validators.</span>rangelength
+            <span class="apidocSignatureSpan">(min, max, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.regexp">
+            function <span class="apidocSignatureSpan">forms.validators.</span>regexp
+            <span class="apidocSignatureSpan">(regex, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.required">
+            function <span class="apidocSignatureSpan">forms.validators.</span>required
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.requiresFieldIfEmpty">
+            function <span class="apidocSignatureSpan">forms.validators.</span>requiresFieldIfEmpty
+            <span class="apidocSignatureSpan">(alternate_field, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.validators.url">
+            function <span class="apidocSignatureSpan">forms.validators.</span>url
+            <span class="apidocSignatureSpan">(include_localhost, message)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.forms.widgets">module forms.widgets</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.checkbox">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>checkbox
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.color">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>color
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.date">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>date
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.email">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>email
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.hidden">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>hidden
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.label">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>label
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.multipleCheckbox">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>multipleCheckbox
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.multipleRadio">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>multipleRadio
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.multipleSelect">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>multipleSelect
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.number">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>number
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.password">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>password
+            <span class="apidocSignatureSpan">(opt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.select">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>select
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.tel">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>tel
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.text">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>text
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.forms.widgets.textarea">
+            function <span class="apidocSignatureSpan">forms.widgets.</span>textarea
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.forms" id="apidoc.module.forms">module forms</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.forms.create" id="apidoc.element.forms.create">
+        function <span class="apidocSignatureSpan">forms.</span>create
+        <span class="apidocSignatureSpan">(fields, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function (fields, options) {
+    var opts = assign({}, options);
+
+    var validatePastFirstError = !!opts.validatePastFirstError;
+
+    keys(fields).forEach(function (k) {
+        // if it&#x27;s not a field object, create an object field.
+        if (!is.fn(fields[k].toHTML) &#x26;&#x26; is.object(fields[k])) {
+            fields[k] = exports.fields.object(fields[k], opts);
+        }
+        fields[k].name = k;
+    });
+    var f = {
+        fields: fields,
+        bind: function (data) {
+            var b = {
+                toHTML: f.toHTML,
+                fields: {}
+            };
+            keys(f.fields).forEach(function (k) {
+                if (data != null || f.fields[k].required) {
+                    b.fields[k] = f.fields[k].bind((data || {})[k]);
+                }
+            });
+            b.data = keys(b.fields).reduce(function (a, k) {
+                a[k] = b.fields[k].data;
+                return a;
+            }, {});
+            b.validate = function () {
+                var callback = arguments.length &#x3e; 1 ? arguments[1] : arguments[0];
+
+                async.forEach(keys(b.fields), function (k, asyncCallback) {
+                    b.fields[k].validate(b, function (err, bound_field) {
+                        b.fields[k] = bound_field;
+                        asyncCallback(validatePastFirstError ? null : err);
+                    });
+                }, function (err) {
+                    callback(err, b);
+                });
+            };
+            b.isValid = function () {
+                var form = this;
+                return keys(form.fields).every(function (k) {
+                    var field = form.fields[k];
+                    if (is.fn(field.isValid)) { return field.isValid(); }
+                    return field.error === null || typeof field.error === &#x27;undefined&#x27;;
+                });
+            };
+            return b;
+        },
+        handle: function (obj, callbacks) {
+            if (typeof obj === &#x27;undefined&#x27; || obj === null || (is.object(obj) &#x26;&#x26; is.empty(obj))) {
+                (callbacks.empty || callbacks.other)(f, callbacks);
+            } else if (obj instanceof http.IncomingMessage) {
+                if (obj.method === &#x27;GET&#x27;) {
+                    var qs = parse(obj.url, { parseArrays: false }).query;
+                    f.handle(querystring.parse(qs), callbacks);
+                } else if (obj.method === &#x27;POST&#x27; || obj.method === &#x27;PUT&#x27;) {
+                    // If the app is using bodyDecoder for connect or express,
+                    // it has already put all the POST data into request.body.
+                    if (obj.body) {
+                        f.handle(obj.body, callbacks);
+                    } else {
+                        var form = new formidable.IncomingForm();
+                        form.parse(obj, function (err, originalFields/* , files*/) {
+                            if (err) { throw err; }
+                            var parsedFields = querystring.parse(querystring.stringify(originalFields));
+                            f.handle(parsedFields, callbacks);
+                        });
+                    }
+                } else {
+                    throw new Error(&#x27;Cannot handle request method: &#x27; + obj.method);
+                }
+            } else if (is.object(obj)) {
+                f.bind(obj).validate(function (err, field) {
+                    if (field.isValid()) {
+                        (callbacks.success || callbacks.other)(field, callbacks);
+                    } else {
+                        (callbacks.error || callbacks.other)(field, callbacks);
+                    }
+                });
+            } else {
+                throw new Error(&#x27;Cannot handle type: &#x27; + typeof obj);
+            }
+        },
+        toHTML: function () {
+            var form = this;
+
+            var iterator = arguments.length &#x3e; 1 ? arguments[1] : arguments[0];
+            var name = arguments.length &#x3e; 1 ? arguments[0] : void 0;
+
+            return keys(form.fields).reduce(function (html, k) {
+                var kname = is.string(name) ? name + &#x27;[&#x27; + k + &#x27;]&#x27; : k;
+                re ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Creating an example registration form:
+
+```javascript
+var forms = require(&#x27;forms&#x27;);
+var fields = forms.fields;
+var validators = forms.validators;
+
+var reg_form = forms.<span class="apidocCodeKeywordSpan">create</span>({
+username: fields.string({ required: true }),
+password: fields.password({ required: validators.required(&#x27;You definitely want a password&#x27;) }),
+confirm:  fields.password({
+    required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+    validators: [validators.matchField(&#x27;password&#x27;)]
+}),
+email: fields.email()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.tag" id="apidoc.element.forms.tag">
+        function <span class="apidocSignatureSpan">forms.</span>tag
+        <span class="apidocSignatureSpan">(tagName, attrsMap, content, contentIsEscaped)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function tag(tagName, attrsMap, content, contentIsEscaped) {
+    var safeTagName = htmlEscape(tagName);
+    var attrsHTML = !is.array(attrsMap) ? attrs(attrsMap) : attrsMap.reduce(function (html, map) {
+        return html + attrs(map);
+    }, &#x27;&#x27;);
+    var safeContent = contentIsEscaped ? content : htmlEscape(content);
+    return &#x27;&#x3c;&#x27; + safeTagName + attrsHTML + (isSelfClosing(safeTagName) ? &#x27; /&#x3e;&#x27; : &#x27;&#x3e;&#x27; + safeContent + &#x27;&#x3c;/&#x27; + safeTagName + &#x27;&#x3e;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.forms.fields" id="apidoc.module.forms.fields">module forms.fields</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.array" id="apidoc.element.forms.fields.array">
+        function <span class="apidocSignatureSpan">forms.fields.</span>array
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">array = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+    f.parse = function (raw_data) {
+        if (typeof raw_data === &#x27;undefined&#x27;) { return []; }
+        return is.array(raw_data) ? raw_data : [raw_data];
+    };
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var keys = require(&#x27;object-keys&#x27;);
+
+// generates a string for common HTML tag attributes
+var attrs = function attrs(a) {
+if (typeof a.id === &#x27;boolean&#x27;) {
+    a.id = a.id ? &#x27;id_&#x27; + a.name : null;
+}
+if (is.<span class="apidocCodeKeywordSpan">array</span>(a.classes) &#x26;&#x26; a.classes.length &#x3e; 0) {
+    a[&#x27;class&#x27;] = htmlEscape(a.classes.join(&#x27; &#x27;));
+}
+a.classes = null;
+var pairs = [];
+keys(a).forEach(function (field) {
+    var value = a[field];
+    if (typeof value === &#x27;boolean&#x27;) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.boolean" id="apidoc.element.forms.fields.boolean">
+        function <span class="apidocSignatureSpan">forms.fields.</span>boolean
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">boolean = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+
+    f.widget = opts.widget || forms.widgets.checkbox(opts.attrs || {});
+    f.parse = function (raw_data) {
+        return !!raw_data;
+    };
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.date" id="apidoc.element.forms.fields.date">
+        function <span class="apidocSignatureSpan">forms.fields.</span>date
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+    if (f.validators) {
+        f.validators.unshift(forms.validators.date());
+    } else {
+        f.validators = [forms.validators.date()];
+    }
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.email" id="apidoc.element.forms.fields.email">
+        function <span class="apidocSignatureSpan">forms.fields.</span>email
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">email = function (opt) {
+    var opts = assign({}, opt);
+    if (!opts.widget) { opts.widget = forms.widgets.email(opts.attrs || {}); }
+    var f = exports.string(opts);
+    if (f.validators) {
+        f.validators.unshift(forms.validators.email());
+    } else {
+        f.validators = [forms.validators.email()];
+    }
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var reg_form = forms.create({
+    username: fields.string({ required: true }),
+    password: fields.password({ required: validators.required(&#x27;You definitely want a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.matchField(&#x27;password&#x27;)]
+    }),
+    email: fields.<span class="apidocCodeKeywordSpan">email</span>()
+});
+```
+
+Rendering a HTML representation of the form:
+
+```javascript
+reg_form.toHTML();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.number" id="apidoc.element.forms.fields.number">
+        function <span class="apidocSignatureSpan">forms.fields.</span>number
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">number = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+
+    f.parse = function (raw_data) {
+        if (raw_data === null || raw_data === &#x27;&#x27;) {
+            return NaN;
+        }
+        return Number(raw_data);
+    };
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.object" id="apidoc.element.forms.fields.object">
+        function <span class="apidocSignatureSpan">forms.fields.</span>object
+        <span class="apidocSignatureSpan">(fields, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">object = function (fields, opts) {
+    return forms.create(fields || {}, opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.password" id="apidoc.element.forms.fields.password">
+        function <span class="apidocSignatureSpan">forms.fields.</span>password
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">password = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+    f.widget = opts.widget || forms.widgets.password(opts.attrs || {});
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var forms = require(&#x27;forms&#x27;);
+var fields = forms.fields;
+var validators = forms.validators;
+
+var reg_form = forms.create({
+    username: fields.string({ required: true }),
+    password: fields.<span class="apidocCodeKeywordSpan">password</span>({ required: validators.required(&#x27;You definitely want
+ a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.matchField(&#x27;password&#x27;)]
+    }),
+    email: fields.email()
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.string" id="apidoc.element.forms.fields.string">
+        function <span class="apidocSignatureSpan">forms.fields.</span>string
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">string = function (options) {
+    var opt = options || {};
+
+    var f = assign({}, opt);
+    f.widget = f.widget || forms.widgets.text(opt.attrs || {});
+
+    f.parse = function (raw_data) {
+        if (typeof raw_data !== &#x27;undefined&#x27; &#x26;&#x26; raw_data !== null) {
+            return String(raw_data);
+        }
+        return &#x27;&#x27;;
+    };
+    f.bind = function (raw_data) {
+        var b = assign({}, f); // clone field object:
+        b.value = raw_data;
+        b.data = b.parse(raw_data);
+        b.validate = function (form, callback) {
+            var forceValidation = (b.validators || []).some(function (validator) {
+                return validator.forceValidation;
+            });
+            if (!forceValidation &#x26;&#x26; (raw_data === &#x27;&#x27; || raw_data === null || typeof raw_data === &#x27;undefined&#x27;)) {
+                // don&#x27;t validate empty fields, but check if required
+                if (b.required) {
+                    var validator = is.fn(b.required) ? b.required : validators.required();
+                    validator(form, b, function (v_err) {
+                        b.error = v_err ? String(v_err) : null;
+                        callback(v_err, b);
+                    });
+                } else {
+                    process.nextTick(function () { callback(null, b); });
+                }
+            } else {
+                async.forEachSeries(b.validators || [], function (v, asyncCallback) {
+                    if (!b.error) {
+                        v(form, b, function (v_err) {
+                            b.error = v_err ? String(v_err) : null;
+                            asyncCallback(null);
+                        });
+                    } else {
+                        asyncCallback(null);
+                    }
+                }, function (err) {
+                    callback(err, b);
+                });
+            }
+        };
+        return b;
+    };
+    f.errorHTML = function () {
+        var classes = typeof this.cssClasses !== &#x27;undefined&#x27; ? coerceArray(this.cssClasses.error) : [];
+        return this.error ? tag(&#x27;p&#x27;, { classes: [&#x27;error_msg&#x27;].concat(classes) }, this.error) : &#x27;&#x27;;
+    };
+    f.labelText = function (name) {
+        var text = this.label;
+        if (!text &#x26;&#x26; name) {
+            text = name.charAt(0).toUpperCase() + name.slice(1).replace(nameSeparatorRegExp, &#x27; &#x27;).replace(/([a-z])([A-Z])/g, function
+ (match, firstLetter, secondLetter) {
+                return firstLetter + &#x27; &#x27; + secondLetter.toLowerCase();
+            });
+        }
+        return text || &#x27;&#x27;;
+    };
+    f.labelHTML = function (name, id) {
+        if (this.widget.type === &#x27;hidden&#x27;) { return &#x27;&#x27;; }
+        var forID = id === false ? false : (id || &#x27;id_&#x27; + name);
+        return forms.widgets.label({
+            classes: typeof this.cssClasses !== &#x27;undefined&#x27; ? coerceArray(this.cssClasses.label) : [],
+            content: this.labelText(name, id)
+        }).toHTML(forID, f);
+    };
+    f.classes = function () {
+        var r = [&#x27;field&#x27;];
+        if (this.error) { r.push(&#x27;error&#x27;); }
+        if (this.required) { r.push(&#x27;required&#x27;); }
+        if (typeof this.cssClasses !== &#x27;undefined&#x27;) {
+            r = r.concat(coerceArray(this.cssClasses.field));
+        }
+        return r;
+    };
+    f.toHTML = function (name, iterator) {
+        return (iterator || forms.render.div)(name || this.name, this, opt);
+    };
+
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var forms = require(&#x27;forms&#x27;);
+var fields = forms.fields;
+var validators = forms.validators;
+
+var reg_form = forms.create({
+    username: fields.<span class="apidocCodeKeywordSpan">string</span>({ required: true }),
+    password: fields.password({ required: validators.required(&#x27;You definitely want a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.matchField(&#x27;password&#x27;)]
+    }),
+    email: fields.email()
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.tel" id="apidoc.element.forms.fields.tel">
+        function <span class="apidocSignatureSpan">forms.fields.</span>tel
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tel = function (opt) {
+    var opts = assign({}, opt);
+    if (!opts.widget) { opts.widget = forms.widgets.tel(opts.attrs || {}); }
+    return exports.string(opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.fields.url" id="apidoc.element.forms.fields.url">
+        function <span class="apidocSignatureSpan">forms.fields.</span>url
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">url = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+    if (f.validators) {
+        f.validators.unshift(forms.validators.url());
+    } else {
+        f.validators = [forms.validators.url()];
+    }
+    return f;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.forms.render" id="apidoc.module.forms.render">module forms.render</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.forms.render.div" id="apidoc.element.forms.render.div">
+        function <span class="apidocSignatureSpan">forms.render.</span>div
+        <span class="apidocSignatureSpan">(name, field, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">div = function (name, field, options) {
+    var opt = options || {};
+    var wrappedContent = [];
+    var errorHTML = opt.hideError ? &#x27;&#x27; : field.errorHTML();
+    if (field.widget.type === &#x27;multipleCheckbox&#x27; || field.widget.type === &#x27;multipleRadio&#x27;) {
+        var fieldsetAttrs = { classes: [] };
+        if (opt.fieldsetClasses) {
+            fieldsetAttrs.classes = fieldsetAttrs.classes.concat(opt.fieldsetClasses);
+        }
+        var legendAttrs = { classes: [] };
+        if (opt.legendClasses) {
+            legendAttrs.classes = legendAttrs.classes.concat(opt.legendClasses);
+        }
+
+        var fieldset = tag(&#x27;fieldset&#x27;, fieldsetAttrs, [
+            tag(&#x27;legend&#x27;, legendAttrs, field.labelText(name)),
+            opt.errorAfterField ? &#x27;&#x27; : errorHTML,
+            field.widget.toHTML(name, field),
+            opt.errorAfterField ? errorHTML : &#x27;&#x27;
+        ].join(&#x27;&#x27;), true);
+        wrappedContent.push(fieldset);
+    } else {
+        var fieldHTMLs = [field.labelHTML(name, field.id), field.widget.toHTML(name, field)];
+        if (opt.labelAfterField) {
+            fieldHTMLs.reverse();
+        }
+        if (opt.errorAfterField) {
+            fieldHTMLs.push(errorHTML);
+        } else {
+            fieldHTMLs.unshift(errorHTML);
+        }
+        wrappedContent = wrappedContent.concat(fieldHTMLs);
+    }
+    return tag(tagName, { classes: field.classes() }, wrappedContent.join(&#x27;&#x27;), true);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.render.li" id="apidoc.element.forms.render.li">
+        function <span class="apidocSignatureSpan">forms.render.</span>li
+        <span class="apidocSignatureSpan">(name, field, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">li = function (name, field, options) {
+    var opt = options || {};
+    var wrappedContent = [];
+    var errorHTML = opt.hideError ? &#x27;&#x27; : field.errorHTML();
+    if (field.widget.type === &#x27;multipleCheckbox&#x27; || field.widget.type === &#x27;multipleRadio&#x27;) {
+        var fieldsetAttrs = { classes: [] };
+        if (opt.fieldsetClasses) {
+            fieldsetAttrs.classes = fieldsetAttrs.classes.concat(opt.fieldsetClasses);
+        }
+        var legendAttrs = { classes: [] };
+        if (opt.legendClasses) {
+            legendAttrs.classes = legendAttrs.classes.concat(opt.legendClasses);
+        }
+
+        var fieldset = tag(&#x27;fieldset&#x27;, fieldsetAttrs, [
+            tag(&#x27;legend&#x27;, legendAttrs, field.labelText(name)),
+            opt.errorAfterField ? &#x27;&#x27; : errorHTML,
+            field.widget.toHTML(name, field),
+            opt.errorAfterField ? errorHTML : &#x27;&#x27;
+        ].join(&#x27;&#x27;), true);
+        wrappedContent.push(fieldset);
+    } else {
+        var fieldHTMLs = [field.labelHTML(name, field.id), field.widget.toHTML(name, field)];
+        if (opt.labelAfterField) {
+            fieldHTMLs.reverse();
+        }
+        if (opt.errorAfterField) {
+            fieldHTMLs.push(errorHTML);
+        } else {
+            fieldHTMLs.unshift(errorHTML);
+        }
+        wrappedContent = wrappedContent.concat(fieldHTMLs);
+    }
+    return tag(tagName, { classes: field.classes() }, wrappedContent.join(&#x27;&#x27;), true);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.render.p" id="apidoc.element.forms.render.p">
+        function <span class="apidocSignatureSpan">forms.render.</span>p
+        <span class="apidocSignatureSpan">(name, field, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">p = function (name, field, options) {
+    var opt = options || {};
+    var wrappedContent = [];
+    var errorHTML = opt.hideError ? &#x27;&#x27; : field.errorHTML();
+    if (field.widget.type === &#x27;multipleCheckbox&#x27; || field.widget.type === &#x27;multipleRadio&#x27;) {
+        var fieldsetAttrs = { classes: [] };
+        if (opt.fieldsetClasses) {
+            fieldsetAttrs.classes = fieldsetAttrs.classes.concat(opt.fieldsetClasses);
+        }
+        var legendAttrs = { classes: [] };
+        if (opt.legendClasses) {
+            legendAttrs.classes = legendAttrs.classes.concat(opt.legendClasses);
+        }
+
+        var fieldset = tag(&#x27;fieldset&#x27;, fieldsetAttrs, [
+            tag(&#x27;legend&#x27;, legendAttrs, field.labelText(name)),
+            opt.errorAfterField ? &#x27;&#x27; : errorHTML,
+            field.widget.toHTML(name, field),
+            opt.errorAfterField ? errorHTML : &#x27;&#x27;
+        ].join(&#x27;&#x27;), true);
+        wrappedContent.push(fieldset);
+    } else {
+        var fieldHTMLs = [field.labelHTML(name, field.id), field.widget.toHTML(name, field)];
+        if (opt.labelAfterField) {
+            fieldHTMLs.reverse();
+        }
+        if (opt.errorAfterField) {
+            fieldHTMLs.push(errorHTML);
+        } else {
+            fieldHTMLs.unshift(errorHTML);
+        }
+        wrappedContent = wrappedContent.concat(fieldHTMLs);
+    }
+    return tag(tagName, { classes: field.classes() }, wrappedContent.join(&#x27;&#x27;), true);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.render.table" id="apidoc.element.forms.render.table">
+        function <span class="apidocSignatureSpan">forms.render.</span>table
+        <span class="apidocSignatureSpan">(name, field, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">table = function (name, field, options) {
+    var opt = options || {};
+
+    var th = tag(&#x27;th&#x27;, {}, field.labelHTML(name, field.id), true);
+
+    var tdContent = field.widget.toHTML(name, field);
+
+    if (!opt.hideError) {
+        var errorHTML = field.errorHTML();
+        if (opt.errorAfterField) {
+            tdContent += errorHTML;
+        } else {
+            tdContent = errorHTML + tdContent;
+        }
+    }
+
+    var td = tag(&#x27;td&#x27;, {}, tdContent, true);
+
+    return tag(&#x27;tr&#x27;, { classes: field.classes() }, th + td, true);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.forms.tag" id="apidoc.module.forms.tag">module forms.tag</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.forms.tag.tag" id="apidoc.element.forms.tag.tag">
+        function <span class="apidocSignatureSpan">forms.</span>tag
+        <span class="apidocSignatureSpan">(tagName, attrsMap, content, contentIsEscaped)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function tag(tagName, attrsMap, content, contentIsEscaped) {
+    var safeTagName = htmlEscape(tagName);
+    var attrsHTML = !is.array(attrsMap) ? attrs(attrsMap) : attrsMap.reduce(function (html, map) {
+        return html + attrs(map);
+    }, &#x27;&#x27;);
+    var safeContent = contentIsEscaped ? content : htmlEscape(content);
+    return &#x27;&#x3c;&#x27; + safeTagName + attrsHTML + (isSelfClosing(safeTagName) ? &#x27; /&#x3e;&#x27; : &#x27;&#x3e;&#x27; + safeContent + &#x27;&#x3c;/&#x27; + safeTagName + &#x27;&#x3e;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.tag.attrs" id="apidoc.element.forms.tag.attrs">
+        function <span class="apidocSignatureSpan">forms.tag.</span>attrs
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function attrs(a) {
+    if (typeof a.id === &#x27;boolean&#x27;) {
+        a.id = a.id ? &#x27;id_&#x27; + a.name : null;
+    }
+    if (is.array(a.classes) &#x26;&#x26; a.classes.length &#x3e; 0) {
+        a[&#x27;class&#x27;] = htmlEscape(a.classes.join(&#x27; &#x27;));
+    }
+    a.classes = null;
+    var pairs = [];
+    keys(a).forEach(function (field) {
+        var value = a[field];
+        if (typeof value === &#x27;boolean&#x27;) {
+            value = value ? field : null;
+        } else if (typeof value === &#x27;number&#x27; &#x26;&#x26; isNaN(value)) {
+            value = null;
+        }
+        if (typeof value !== &#x27;undefined&#x27; &#x26;&#x26; value !== null) {
+            pairs.push(htmlEscape(field) + &#x27;=&#x22;&#x27; + htmlEscape(value) + &#x27;&#x22;&#x27;);
+        }
+    });
+    return pairs.length &#x3e; 0 ? &#x27; &#x27; + pairs.join(&#x27; &#x27;) : &#x27;&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.forms.validators" id="apidoc.module.forms.validators">module forms.validators</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.alphanumeric" id="apidoc.element.forms.validators.alphanumeric">
+        function <span class="apidocSignatureSpan">forms.validators.</span>alphanumeric
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">alphanumeric = function (message) {
+    return exports.regexp(/^[a-zA-Z0-9]*$/, message || &#x27;Letters and numbers only.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.color" id="apidoc.element.forms.validators.color">
+        function <span class="apidocSignatureSpan">forms.validators.</span>color
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">color = function (message) {
+    var msg = message || &#x27;Inputs of type &#x22;color&#x22; require hex notation, e.g. #FFF or #ABC123.&#x27;;
+    var re = /^#([0-9A-F]{8}|[0-9A-F]{6}|[0-9A-F]{3})$/i;
+    return function (form, field, callback) {
+        if (re.test(field.data)) {
+            callback();
+        } else {
+            callback(msg);
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.date" id="apidoc.element.forms.validators.date">
+        function <span class="apidocSignatureSpan">forms.validators.</span>date
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (message) {
+    var msg = message || &#x27;Inputs of type &#x22;date&#x22; must be valid dates in the format &#x22;yyyy-mm-dd&#x22;&#x27;;
+    var numberRegex = /^[0-9]+$/,
+        invalidDate = new Date(&#x27;z&#x27;);
+    return function (form, field, callback) {
+        var parts = field.data ? field.data.split(&#x27;-&#x27;) : [];
+        var allNumbers = parts.every(function (part) { return numberRegex.test(part); });
+        var date = allNumbers &#x26;&#x26; parts.length === 3 ? new Date(parts[0], parts[1] - 1, parts[2]) : invalidDate;
+        if (!isNaN(date.getTime())) {
+            callback();
+        } else {
+            callback(msg);
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.digits" id="apidoc.element.forms.validators.digits">
+        function <span class="apidocSignatureSpan">forms.validators.</span>digits
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">digits = function (message) {
+    return exports.regexp(/^\d+$/, message || &#x27;Numbers only.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.email" id="apidoc.element.forms.validators.email">
+        function <span class="apidocSignatureSpan">forms.validators.</span>email
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">email = function (message) {
+    var msg = message || &#x27;Please enter a valid email address.&#x27;;
+    // regular expression by Scott Gonzalez:
+    // http://projects.scottsplayground.com/email_address_validation/
+    // eslint-disable-next-line no-control-regex, no-useless-escape
+    return exports.regexp(/^((([a-z]|\d|[!#\$%&#x26;&#x27;\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&#x26;&#x27;\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, msg);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var reg_form = forms.create({
+    username: fields.string({ required: true }),
+    password: fields.password({ required: validators.required(&#x27;You definitely want a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.matchField(&#x27;password&#x27;)]
+    }),
+    email: fields.<span class="apidocCodeKeywordSpan">email</span>()
+});
+```
+
+Rendering a HTML representation of the form:
+
+```javascript
+reg_form.toHTML();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.integer" id="apidoc.element.forms.validators.integer">
+        function <span class="apidocSignatureSpan">forms.validators.</span>integer
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">integer = function (message) {
+    return exports.regexp(/^-?\d+$/, message || &#x27;Please enter an integer value.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.matchField" id="apidoc.element.forms.validators.matchField">
+        function <span class="apidocSignatureSpan">forms.validators.</span>matchField
+        <span class="apidocSignatureSpan">(match_field, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">matchField = function (match_field, message) {
+    var msg = message || &#x27;Does not match %s.&#x27;;
+    return function (form, field, callback) {
+        if (form.fields[match_field].data !== field.data) {
+            callback(format(msg, match_field));
+        } else {
+            callback();
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var validators = forms.validators;
+
+var reg_form = forms.create({
+    username: fields.string({ required: true }),
+    password: fields.password({ required: validators.required(&#x27;You definitely want a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.<span class="apidocCodeKeywordSpan">matchField</span>(&#x27;password&#x27;)]
+    }),
+    email: fields.email()
+});
+```
+
+Rendering a HTML representation of the form:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.matchValue" id="apidoc.element.forms.validators.matchValue">
+        function <span class="apidocSignatureSpan">forms.validators.</span>matchValue
+        <span class="apidocSignatureSpan">(valueGetter, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">matchValue = function (valueGetter, message) {
+    if (!is.fn(valueGetter)) {
+        throw new TypeError(&#x27;valueGetter must be a function&#x27;);
+    }
+    var msg = message || &#x27;%s does not match expected value: &#x22;%s&#x22;&#x27;;
+    return function (form, field, callback) {
+        var expected = valueGetter();
+        if (field.data !== expected) {
+            callback(format(msg, formatFieldName(field), expected));
+        } else {
+            callback();
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.max" id="apidoc.element.forms.validators.max">
+        function <span class="apidocSignatureSpan">forms.validators.</span>max
+        <span class="apidocSignatureSpan">(val, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">max = function (val, message) {
+    var msg = message || &#x27;Please enter a value less than or equal to %s.&#x27;;
+    return function (form, field, callback) {
+        if (field.data &#x3c;= val) {
+            callback();
+        } else {
+            callback(format(msg, val));
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.maxlength" id="apidoc.element.forms.validators.maxlength">
+        function <span class="apidocSignatureSpan">forms.validators.</span>maxlength
+        <span class="apidocSignatureSpan">(val, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">maxlength = function (val, message) {
+    var msg = message || &#x27;Please enter no more than %s characters.&#x27;;
+    return function (form, field, callback) {
+        if (field.data.length &#x3c;= val) {
+            callback();
+        } else {
+            callback(format(msg, val));
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.min" id="apidoc.element.forms.validators.min">
+        function <span class="apidocSignatureSpan">forms.validators.</span>min
+        <span class="apidocSignatureSpan">(val, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">min = function (val, message) {
+    var msg = message || &#x27;Please enter a value greater than or equal to %s.&#x27;;
+    return function (form, field, callback) {
+        if (field.data &#x3e;= val) {
+            callback();
+        } else {
+            callback(format(msg, val));
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.minlength" id="apidoc.element.forms.validators.minlength">
+        function <span class="apidocSignatureSpan">forms.validators.</span>minlength
+        <span class="apidocSignatureSpan">(val, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">minlength = function (val, message) {
+    var msg = message || &#x27;Please enter at least %s characters.&#x27;;
+    return function (form, field, callback) {
+        if (field.data.length &#x3e;= val) {
+            callback();
+        } else {
+            callback(format(msg, val));
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.range" id="apidoc.element.forms.validators.range">
+        function <span class="apidocSignatureSpan">forms.validators.</span>range
+        <span class="apidocSignatureSpan">(min, max, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">range = function (min, max, message) {
+    var msg = message || &#x27;Please enter a value between %s and %s.&#x27;;
+    return function (form, field, callback) {
+        if (field.data &#x3e;= min &#x26;&#x26; field.data &#x3c;= max) {
+            callback();
+        } else {
+            callback(format(msg, min, max));
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.rangelength" id="apidoc.element.forms.validators.rangelength">
+        function <span class="apidocSignatureSpan">forms.validators.</span>rangelength
+        <span class="apidocSignatureSpan">(min, max, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">rangelength = function (min, max, message) {
+    var msg = message || &#x27;Please enter a value between %s and %s characters long.&#x27;;
+    return function (form, field, callback) {
+        if (field.data.length &#x3e;= min &#x26;&#x26; field.data.length &#x3c;= max) {
+            callback();
+        } else {
+            callback(format(msg, min, max));
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.regexp" id="apidoc.element.forms.validators.regexp">
+        function <span class="apidocSignatureSpan">forms.validators.</span>regexp
+        <span class="apidocSignatureSpan">(regex, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">regexp = function (regex, message) {
+    var msg = message || &#x27;Invalid format.&#x27;;
+    var re = new RegExp(regex);
+    return function (form, field, callback) {
+        if (re.test(field.data)) {
+            callback();
+        } else {
+            callback(msg);
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.required" id="apidoc.element.forms.validators.required">
+        function <span class="apidocSignatureSpan">forms.validators.</span>required
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">required = function (message) {
+    var msg = message || &#x27;%s is required.&#x27;;
+    return function (form, field, callback) {
+        if (trim(field.data || &#x27;&#x27;).length === 0) {
+            callback(format(msg, formatFieldName(field)));
+        } else {
+            callback();
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var forms = require(&#x27;forms&#x27;);
+var fields = forms.fields;
+var validators = forms.validators;
+
+var reg_form = forms.create({
+    username: fields.string({ required: true }),
+    password: fields.password({ required: validators.<span class="apidocCodeKeywordSpan">required</span>(&#x27;You definitely want
+ a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.matchField(&#x27;password&#x27;)]
+    }),
+    email: fields.email()
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.requiresFieldIfEmpty" id="apidoc.element.forms.validators.requiresFieldIfEmpty">
+        function <span class="apidocSignatureSpan">forms.validators.</span>requiresFieldIfEmpty
+        <span class="apidocSignatureSpan">(alternate_field, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">requiresFieldIfEmpty = function (alternate_field, message) {
+    var msg = message || &#x27;One of %s or %s is required.&#x27;;
+    var validator = function (form, field, callback) {
+        var alternateBlank = trim(form.fields[alternate_field].data || &#x27;&#x27;).length === 0;
+        var fieldBlank = trim(field.data || &#x27;&#x27;).length === 0;
+        if (alternateBlank &#x26;&#x26; fieldBlank) {
+            callback(format(msg, formatFieldName(field), alternate_field));
+        } else {
+            callback();
+        }
+    };
+    validator.forceValidation = true;
+    return validator;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.validators.url" id="apidoc.element.forms.validators.url">
+        function <span class="apidocSignatureSpan">forms.validators.</span>url
+        <span class="apidocSignatureSpan">(include_localhost, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">url = function (include_localhost, message) {
+    var msg = message || &#x27;Please enter a valid URL.&#x27;;
+    // regular expression by Scott Gonzalez:
+    // http://projects.scottsplayground.com/iri/
+    // eslint-disable-next-line no-control-regex, no-useless-escape
+    var external_regex = /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
+    // eslint-disable-next-line no-useless-escape
+    var with_localhost_regex = /^(https?|ftp):\/\/(localhost|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&#x26;&#x27;\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
+    return exports.regexp(include_localhost ? with_localhost_regex : external_regex, msg);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.forms.widgets" id="apidoc.module.forms.widgets">module forms.widgets</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.checkbox" id="apidoc.element.forms.widgets.checkbox">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>checkbox
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkbox = function (options) {
+    var opt = options || {};
+    var w = {
+        classes: opt.classes,
+        type: &#x27;checkbox&#x27;
+    };
+    var userAttrs = getUserAttrs(opt);
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            type: &#x27;checkbox&#x27;,
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            checked: !!f.value,
+            value: &#x27;on&#x27;
+        };
+        return tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.color" id="apidoc.element.forms.widgets.color">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>color
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">color = function (opts) {
+    var opt = opts || {};
+    var userAttrs = getUserAttrs(opt);
+    var w = {
+        classes: opt.classes,
+        type: type,
+        formatValue: function (value) {
+            return (value || value === 0) ? value : null;
+        }
+    };
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            type: type,
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            value: w.formatValue(f.value)
+        };
+        return tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.date" id="apidoc.element.forms.widgets.date">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>date
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (opt) {
+    var w = dateWidget(opt);
+    w.formatValue = function (value) {
+        if (!value) {
+            return null;
+        }
+
+        var date = is.date(value) ? value : new Date(value);
+
+        if (isNaN(date.getTime())) {
+            return null;
+        }
+
+        return date.toISOString().slice(0, 10);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.email" id="apidoc.element.forms.widgets.email">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>email
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">email = function (opts) {
+    var opt = opts || {};
+    var userAttrs = getUserAttrs(opt);
+    var w = {
+        classes: opt.classes,
+        type: type,
+        formatValue: function (value) {
+            return (value || value === 0) ? value : null;
+        }
+    };
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            type: type,
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            value: w.formatValue(f.value)
+        };
+        return tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var reg_form = forms.create({
+    username: fields.string({ required: true }),
+    password: fields.password({ required: validators.required(&#x27;You definitely want a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.matchField(&#x27;password&#x27;)]
+    }),
+    email: fields.<span class="apidocCodeKeywordSpan">email</span>()
+});
+```
+
+Rendering a HTML representation of the form:
+
+```javascript
+reg_form.toHTML();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.hidden" id="apidoc.element.forms.widgets.hidden">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>hidden
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hidden = function (opts) {
+    var opt = opts || {};
+    var userAttrs = getUserAttrs(opt);
+    var w = {
+        classes: opt.classes,
+        type: type,
+        formatValue: function (value) {
+            return (value || value === 0) ? value : null;
+        }
+    };
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            type: type,
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            value: w.formatValue(f.value)
+        };
+        return tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.label" id="apidoc.element.forms.widgets.label">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>label
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">label = function (options) {
+    var opt = options || {};
+    var w = { classes: opt.classes || [] };
+    var userAttrs = getUserAttrs(opt);
+    w.toHTML = function (forID) {
+        var attrs = {
+            &#x27;for&#x27;: forID,
+            classes: w.classes
+        };
+        return tag(&#x27;label&#x27;, [attrs, userAttrs, w.attrs || {}], opt.content);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.multipleCheckbox" id="apidoc.element.forms.widgets.multipleCheckbox">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>multipleCheckbox
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">multipleCheckbox = function (options) {
+    var opt = options || {};
+    var w = {
+        classes: opt.classes,
+        labelClasses: opt.labelClasses,
+        type: &#x27;multipleCheckbox&#x27;
+    };
+    var userAttrs = getUserAttrs(opt);
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var choices = unifyChoices(f.choices, 0);
+        return renderChoices(choices, function (choice) {
+            // input element
+            var id = f.id === false ? false : (f.id ? f.id + &#x27;_&#x27; + choice.value : &#x27;id_&#x27; + name + &#x27;_&#x27; + choice.value);
+            var checked = isSelected(f.value, choice.value);
+
+            var attrs = {
+                type: &#x27;checkbox&#x27;,
+                name: name,
+                id: id,
+                classes: w.classes,
+                value: choice.value,
+                checked: !!checked
+            };
+            var inputHTML = tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+
+            // label element
+            var labelHTML = tag(&#x27;label&#x27;, { &#x27;for&#x27;: id, classes: w.labelClasses }, choice.label);
+
+            return inputHTML + labelHTML;
+        });
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.multipleRadio" id="apidoc.element.forms.widgets.multipleRadio">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>multipleRadio
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">multipleRadio = function (options) {
+    var opt = options || {};
+    var w = {
+        classes: opt.classes,
+        labelClasses: opt.labelClasses,
+        type: &#x27;multipleRadio&#x27;
+    };
+    var userAttrs = getUserAttrs(opt);
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var choices = unifyChoices(f.choices, 0);
+        return renderChoices(choices, function (choice) {
+            // input element
+            var id = f.id === false ? false : (f.id ? f.id + &#x27;_&#x27; + choice.value : &#x27;id_&#x27; + name + &#x27;_&#x27; + choice.value);
+            var checked = isSelected(f.value, choice.value);
+            var attrs = {
+                type: &#x27;radio&#x27;,
+                name: name,
+                id: id,
+                classes: w.classes,
+                value: choice.value,
+                checked: !!checked
+            };
+            var inputHTML = tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+            // label element
+            var labelHTML = tag(&#x27;label&#x27;, { &#x27;for&#x27;: id, classes: w.labelClasses }, choice.label);
+
+            return inputHTML + labelHTML;
+        });
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.multipleSelect" id="apidoc.element.forms.widgets.multipleSelect">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>multipleSelect
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">multipleSelect = function (options) {
+    var opt = options || {};
+    var w = {
+        classes: opt.classes,
+        type: isMultiple ? &#x27;multipleSelect&#x27; : &#x27;select&#x27;
+    };
+    var userAttrs = getUserAttrs(opt);
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var choices = unifyChoices(f.choices, 1);
+        var optionsHTML = renderChoices(choices, function render(choice) {
+            if (choice.isNested) {
+                return tag(&#x27;optgroup&#x27;, { label: choice.label }, renderChoices(choice.choices, render), true);
+            } else {
+                return tag(&#x27;option&#x27;, { value: choice.value, selected: !!isSelected(f.value, choice.value) }, choice.label);
+            }
+        });
+        var attrs = {
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes
+        };
+        if (isMultiple) {
+            attrs.multiple = true;
+        }
+        return tag(&#x27;select&#x27;, [attrs, userAttrs, w.attrs || {}], optionsHTML, true);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.number" id="apidoc.element.forms.widgets.number">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>number
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">number = function (opts) {
+    var opt = opts || {};
+    var userAttrs = getUserAttrs(opt);
+    var w = {
+        classes: opt.classes,
+        type: type,
+        formatValue: function (value) {
+            return (value || value === 0) ? value : null;
+        }
+    };
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            type: type,
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            value: w.formatValue(f.value)
+        };
+        return tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.password" id="apidoc.element.forms.widgets.password">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>password
+        <span class="apidocSignatureSpan">(opt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">password = function (opt) {
+    var w = passwordWidget(opt);
+    w.formatValue = passwordFormatValue;
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var forms = require(&#x27;forms&#x27;);
+var fields = forms.fields;
+var validators = forms.validators;
+
+var reg_form = forms.create({
+    username: fields.string({ required: true }),
+    password: fields.<span class="apidocCodeKeywordSpan">password</span>({ required: validators.required(&#x27;You definitely want
+ a password&#x27;) }),
+    confirm:  fields.password({
+        required: validators.required(&#x27;don\&#x27;t you know your own password?&#x27;),
+        validators: [validators.matchField(&#x27;password&#x27;)]
+    }),
+    email: fields.email()
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.select" id="apidoc.element.forms.widgets.select">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>select
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">select = function (options) {
+    var opt = options || {};
+    var w = {
+        classes: opt.classes,
+        type: isMultiple ? &#x27;multipleSelect&#x27; : &#x27;select&#x27;
+    };
+    var userAttrs = getUserAttrs(opt);
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var choices = unifyChoices(f.choices, 1);
+        var optionsHTML = renderChoices(choices, function render(choice) {
+            if (choice.isNested) {
+                return tag(&#x27;optgroup&#x27;, { label: choice.label }, renderChoices(choice.choices, render), true);
+            } else {
+                return tag(&#x27;option&#x27;, { value: choice.value, selected: !!isSelected(f.value, choice.value) }, choice.label);
+            }
+        });
+        var attrs = {
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes
+        };
+        if (isMultiple) {
+            attrs.multiple = true;
+        }
+        return tag(&#x27;select&#x27;, [attrs, userAttrs, w.attrs || {}], optionsHTML, true);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.tel" id="apidoc.element.forms.widgets.tel">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>tel
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tel = function (opts) {
+    var opt = opts || {};
+    var userAttrs = getUserAttrs(opt);
+    var w = {
+        classes: opt.classes,
+        type: type,
+        formatValue: function (value) {
+            return (value || value === 0) ? value : null;
+        }
+    };
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            type: type,
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            value: w.formatValue(f.value)
+        };
+        return tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.text" id="apidoc.element.forms.widgets.text">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>text
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">text = function (opts) {
+    var opt = opts || {};
+    var userAttrs = getUserAttrs(opt);
+    var w = {
+        classes: opt.classes,
+        type: type,
+        formatValue: function (value) {
+            return (value || value === 0) ? value : null;
+        }
+    };
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            type: type,
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            value: w.formatValue(f.value)
+        };
+        return tag(&#x27;input&#x27;, [attrs, userAttrs, w.attrs || {}]);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var widgets = require(&#x27;forms&#x27;).widgets;
+
+var my_form = forms.create({
+title: fields.string({
+    required: true,
+    widget: widgets.<span class="apidocCodeKeywordSpan">text</span>({ classes: [&#x27;input-with-feedback&#x27;] }),
+    errorAfterField: true,
+    cssClasses: {
+        label: [&#x27;control-label col col-lg-3&#x27;]
+    }
+}),
+description: fields.string({
+    errorAfterField: true,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.forms.widgets.textarea" id="apidoc.element.forms.widgets.textarea">
+        function <span class="apidocSignatureSpan">forms.widgets.</span>textarea
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">textarea = function (options) {
+    var opt = options || {};
+    var w = {
+        classes: opt.classes,
+        type: &#x27;textarea&#x27;
+    };
+    var userAttrs = getUserAttrs(opt);
+    w.toHTML = function (name, field) {
+        var f = field || {};
+        var attrs = {
+            name: name,
+            id: f.id === false ? false : (f.id || true),
+            classes: w.classes,
+            rows: opt.rows || null,
+            cols: opt.cols || null
+        };
+        return tag(&#x27;textarea&#x27;, [attrs, userAttrs, w.attrs || {}], f.value || &#x27;&#x27;);
+    };
+    return w;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>

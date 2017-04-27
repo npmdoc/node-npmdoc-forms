@@ -1,6 +1,6 @@
 # npmdoc-forms
 
-#### api documentation for  [forms (v1.3.0)](https://github.com/caolan/forms#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-forms.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-forms) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-forms.svg)](https://travis-ci.org/npmdoc/node-npmdoc-forms)
+#### basic api documentation for  [forms (v1.3.0)](https://github.com/caolan/forms#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-forms.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-forms) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-forms.svg)](https://travis-ci.org/npmdoc/node-npmdoc-forms)
 
 #### An easy way to create, parse, and validate forms
 
@@ -120,7 +120,8 @@
             "android-browser/4.2"
         ]
     },
-    "version": "1.3.0"
+    "version": "1.3.0",
+    "bin": {}
 }
 ```
 

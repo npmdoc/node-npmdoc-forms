@@ -782,21 +782,21 @@ email: fields.email()
     return f;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var keys = require('object-keys');
-
-// generates a string for common HTML tag attributes
-var attrs = function attrs(a) {
-if (typeof a.id === 'boolean') {
-    a.id = a.id ? 'id_' + a.name : null;
-}
-if (is.<span class="apidocCodeKeywordSpan">array</span>(a.classes) &amp;&amp; a.classes.length &gt; 0) {
-    a['class'] = htmlEscape(a.classes.join(' '));
-}
-a.classes = null;
-var pairs = [];
-keys(a).forEach(function (field) {
-    var value = a[field];
-    if (typeof value === 'boolean') {
+                callback('two?! are you crazy?!');
+            } else {
+                callback();
+            }
+        }
+    ]
+}),
+more_options: fields.<span class="apidocCodeKeywordSpan">array</span>({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.multipleCheckbox()
+}),
+even_more: fields.string({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.multipleRadio()
+}),
 ...</pre></li>
     </ul>
 
@@ -841,7 +841,23 @@ keys(a).forEach(function (field) {
     }
     return f;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return f;
+};
+
+exports.date = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+    if (f.validators) {
+        f.validators.unshift(forms.validators.<span class="apidocCodeKeywordSpan">date</span>());
+    } else {
+        f.validators = [forms.validators.date()];
+    }
+    return f;
+};
+
+exports.object = function (fields, opts) {
+...</pre></li>
     </ul>
 
 
@@ -904,7 +920,23 @@ reg_form.toHTML();
     };
     return f;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    name: fields.string({ required: true, label: 'Name' }),
+    email: fields.email({ required: true, label: 'Email' }),
+    address: {
+        address1: fields.string({ required: true, label: 'Address 1' }),
+        address2: fields.string({ label: 'Address 2' }),
+        city: fields.string({ required: true, label: 'City' }),
+        state: fields.string({ required: true, label: 'State' }),
+        zip: fields.<span class="apidocCodeKeywordSpan">number</span>({ required: true, label: 'ZIP' })
+    }
+}
+});
+
+http.createServer(function (req, res) {
+reg_form.handle(req, {
+    success: function (form) {
+...</pre></li>
     </ul>
 
 
@@ -1100,7 +1132,23 @@ var reg_form = forms.create({
     if (!opts.widget) { opts.widget = forms.widgets.tel(opts.attrs || {}); }
     return exports.string(opts);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    f.validators = [forms.validators.email()];
+}
+return f;
+};
+
+exports.tel = function (opt) {
+var opts = assign({}, opt);
+if (!opts.widget) { opts.widget = forms.widgets.<span class="apidocCodeKeywordSpan">tel</span>(opts.attrs || {}); }
+return exports.string(opts);
+};
+
+exports.password = function (opt) {
+var opts = assign({}, opt);
+var f = exports.string(opts);
+f.widget = opts.widget || forms.widgets.password(opts.attrs || {});
+...</pre></li>
     </ul>
 
 
@@ -1122,7 +1170,23 @@ var reg_form = forms.create({
     }
     return f;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+'data-toggle': 'focus'
+});
+*/
+
+var complexForm = forms.create({
+name: fields.string({ required: validators.required('%s is required, silly!') }),
+email: fields.email({ required: true, label: 'Email Address' }),
+website: fields.<span class="apidocCodeKeywordSpan">url</span>(),
+password: fields.password({ required: true }),
+password_confirm: fields.password({
+    required: true,
+    validators: [validators.matchField('password')]
+}),
+phone_1: fields.string({ validators: [validators.requiresFieldIfEmpty('phone_2')] }),
+phone_2: fields.string({ validators: [validators.requiresFieldIfEmpty('phone_1')] }),
+...</pre></li>
     </ul>
 
 
@@ -1514,7 +1578,23 @@ email: fields.email()
     <li>description and source-code<pre class="apidocCodePre">alphanumeric = function (message) {
     return exports.regexp(/^[a-zA-Z0-9]*$/, message || 'Letters and numbers only.');
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    st.end();
+});
+
+t.end();
+});
+
+test('alphanumeric', function (t) {
+var v = validators.<span class="apidocCodeKeywordSpan">alphanumeric</span>();
+
+t.test('valid input', function (st) {
+    var valids = ['asdf', '278', '123abc'];
+    st.plan(valids.length);
+    valids.forEach(function (input) {
+        v('form', { data: input }, function (err) {
+            st.equal(err, undefined);
+...</pre></li>
     </ul>
 
 
@@ -1537,7 +1617,23 @@ email: fields.email()
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    t.equal(err, undefined);
+});
+t.end();
+});
+
+test('color', function (t) {
+t.test('valid colors', function (st) {
+    var v = validators.<span class="apidocCodeKeywordSpan">color</span>();
+    var valids = ['#ABC', '#DEF123', '#ABCDEF12', '#01234567', '#890'];
+    st.plan(valids.length);
+    valids.forEach(function (color) {
+        v('form', { data: color }, function (err) {
+            st.equal(err, undefined);
+        });
+    });
+...</pre></li>
     </ul>
 
 
@@ -1564,7 +1660,23 @@ email: fields.email()
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return f;
+};
+
+exports.date = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+    if (f.validators) {
+        f.validators.unshift(forms.validators.<span class="apidocCodeKeywordSpan">date</span>());
+    } else {
+        f.validators = [forms.validators.date()];
+    }
+    return f;
+};
+
+exports.object = function (fields, opts) {
+...</pre></li>
     </ul>
 
 
@@ -1579,7 +1691,23 @@ email: fields.email()
     <li>description and source-code<pre class="apidocCodePre">digits = function (message) {
     return exports.regexp(/^\d+$/, message || 'Numbers only.');
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+st.end();
+    });
+
+    t.end();
+});
+
+test('digits', function (t) {
+    var v = validators.<span class="apidocCodeKeywordSpan">digits</span>();
+
+    t.test('valid digits', function (st) {
+var valids = ['1', '10', '100'];
+
+st.plan(valids.length);
+valids.forEach(function (input) {
+    v('form', { data: input }, function (err) {
+...</pre></li>
     </ul>
 
 
@@ -1629,7 +1757,23 @@ reg_form.toHTML();
     <li>description and source-code<pre class="apidocCodePre">integer = function (message) {
     return exports.regexp(/^-?\d+$/, message || 'Please enter an integer value.');
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    t.equals(err, undefined);
+    t.end();
+});
+    });
+});
+
+test('integer', function (t) {
+    var v = validators.<span class="apidocCodeKeywordSpan">integer</span>();
+
+    t.test('valid integers', function (st) {
+var valids = ['1', '10', '-1', '-10', '-10'];
+
+st.plan(valids.length);
+valids.forEach(function (input) {
+    v('form', { data: input }, function (err) {
+...</pre></li>
     </ul>
 
 
@@ -1692,7 +1836,22 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+});
+
+test('matchValue', function (t) {
+var data = { fields: { field1: { data: 'one' } } };
+
+t.test('passes when matching the value', function (st) {
+    var getter = function () { return 'one'; };
+    var v = validators.<span class="apidocCodeKeywordSpan">matchValue</span>(getter, 'name: %s | value: %s');
+    st.plan(1);
+    v(data, data.fields.field1, function (err) {
+        st.equal(err, undefined);
+        st.end();
+    });
+});
+...</pre></li>
     </ul>
 
 
@@ -1714,7 +1873,24 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            t.end();
+        });
+    });
+});
+
+test('max', function (t) {
+    t.plan(2);
+    validators.<span class="apidocCodeKeywordSpan">max</span>(100, 'Value must be less than or equal to %s.')('form
+', { data: 150 }, function (tooBigError) {
+        t.equal(tooBigError, 'Value must be less than or equal to 100.');
+        validators.max(100)('form', { data: 100 }, function (err) {
+            t.equal(err, undefined);
+            t.end();
+        });
+    });
+});
+...</pre></li>
     </ul>
 
 
@@ -1736,7 +1912,24 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            t.end();
+        });
+    });
+});
+
+test('maxlength', function (t) {
+    t.plan(2);
+    validators.<span class="apidocCodeKeywordSpan">maxlength</span>(5)('form', { data: '123456' }, function (
+tooLongError) {
+        t.equal(tooLongError, 'Please enter no more than 5 characters.');
+        validators.maxlength(5)('form', { data: '12345' }, function (err) {
+            t.equal(err, undefined);
+            t.end();
+        });
+    });
+});
+...</pre></li>
     </ul>
 
 
@@ -1758,7 +1951,24 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            });
+        });
+    });
+});
+
+test('min', function (t) {
+    t.plan(2);
+    validators.<span class="apidocCodeKeywordSpan">min</span>(100, 'Value must be greater than or equal to %s.')('
+;form', { data: 50 }, function (tooSmallError) {
+        t.equal(tooSmallError, 'Value must be greater than or equal to 100.');
+        validators.min(100)('form', { data: 100 }, function (err) {
+            t.equal(err, undefined);
+            t.end();
+        });
+    });
+});
+...</pre></li>
     </ul>
 
 
@@ -1780,7 +1990,24 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        });
+    });
+    t.end();
+});
+
+test('minlength', function (t) {
+    t.plan(2);
+    validators.<span class="apidocCodeKeywordSpan">minlength</span>(5, 'Enter at least %s characters.')('form'
+;, { data: '1234' }, function (tooShortError) {
+        t.equal(tooShortError, 'Enter at least 5 characters.');
+        validators.minlength(5)('form', { data: '12345' }, function (err) {
+            t.equal(err, undefined);
+            t.end();
+        });
+    });
+});
+...</pre></li>
     </ul>
 
 
@@ -1802,7 +2029,24 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            t.end();
+        });
+    });
+});
+
+test('range', function (t) {
+    t.plan(2);
+    validators.<span class="apidocCodeKeywordSpan">range</span>(10, 20, 'Value must be between %s and %s.')('form
+', { data: 50 }, function (rangeError) {
+        t.equal(rangeError, 'Value must be between 10 and 20.');
+        validators.range(10, 20)('form', { data: 15 }, function (err) {
+            t.equal(err, undefined);
+            t.end();
+        });
+    });
+});
+...</pre></li>
     </ul>
 
 
@@ -1824,7 +2068,24 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        t.end();
+    });
+});
+});
+
+test('rangelength', function (t) {
+t.plan(4);
+validators.<span class="apidocCodeKeywordSpan">rangelength</span>(2, 4, 'Enter between %s and %s characters.')('form
+', { data: '12345' }, function (err) {
+    t.equal(err, 'Enter between 2 and 4 characters.');
+});
+validators.rangelength(2, 4)('form', { data: '1' }, function (err) {
+    t.equal(err, 'Please enter a value between 2 and 4 characters long.');
+});
+validators.rangelength(2, 4)('form', { data: '12' }, function (err) {
+    t.equal(err, undefined);
+...</pre></li>
     </ul>
 
 
@@ -1847,7 +2108,24 @@ Rendering a HTML representation of the form:
         }
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+exports.email = function (message) {
+var msg = message || 'Please enter a valid email address.';
+// regular expression by Scott Gonzalez:
+// http://projects.scottsplayground.com/email_address_validation/
+// eslint-disable-next-line no-control-regex, no-useless-escape
+return exports.<span class="apidocCodeKeywordSpan">regexp</span>(/^((([a-z]|\d|[!#\$%&amp;'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\
+uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&amp;'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, msg);
+};
+
+exports.url = function (include_localhost, message) {
+var msg = message || 'Please enter a valid URL.';
+// regular expression by Scott Gonzalez:
+// http://projects.scottsplayground.com/iri/
+// eslint-disable-next-line no-control-regex, no-useless-escape
+...</pre></li>
     </ul>
 
 
@@ -1912,7 +2190,24 @@ var reg_form = forms.create({
     validator.forceValidation = true;
     return validator;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+email: fields.email({ required: true, label: 'Email Address' }),
+website: fields.url(),
+password: fields.password({ required: true }),
+password_confirm: fields.password({
+    required: true,
+    validators: [validators.matchField('password')]
+}),
+phone_1: fields.string({ validators: [validators.<span class="apidocCodeKeywordSpan">requiresFieldIfEmpty</span>('phone_2&amp;#
+x27;)] }),
+phone_2: fields.string({ validators: [validators.requiresFieldIfEmpty('phone_1')] }),
+options: fields.string({
+    choices: {
+        one: 'option one',
+        two: 'option two',
+        three: 'option three'
+    },
+...</pre></li>
     </ul>
 
 
@@ -1934,7 +2229,23 @@ var reg_form = forms.create({
     var with_localhost_regex = /^(https?|ftp):\/\/(localhost|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
     return exports.regexp(include_localhost ? with_localhost_regex : external_regex, msg);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+'data-toggle': 'focus'
+});
+*/
+
+var complexForm = forms.create({
+name: fields.string({ required: validators.required('%s is required, silly!') }),
+email: fields.email({ required: true, label: 'Email Address' }),
+website: fields.<span class="apidocCodeKeywordSpan">url</span>(),
+password: fields.password({ required: true }),
+password_confirm: fields.password({
+    required: true,
+    validators: [validators.matchField('password')]
+}),
+phone_1: fields.string({ validators: [validators.requiresFieldIfEmpty('phone_2')] }),
+phone_2: fields.string({ validators: [validators.requiresFieldIfEmpty('phone_1')] }),
+...</pre></li>
     </ul>
 
 
@@ -1972,7 +2283,23 @@ var reg_form = forms.create({
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return f;
+};
+
+exports['boolean'] = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+
+    f.widget = opts.widget || forms.widgets.<span class="apidocCodeKeywordSpan">checkbox</span>(opts.attrs || {});
+    f.parse = function (raw_data) {
+        return !!raw_data;
+    };
+    return f;
+};
+
+exports.email = function (opt) {
+...</pre></li>
     </ul>
 
 
@@ -2007,7 +2334,23 @@ var reg_form = forms.create({
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    t.equal(err, undefined);
+});
+t.end();
+});
+
+test('color', function (t) {
+t.test('valid colors', function (st) {
+    var v = validators.<span class="apidocCodeKeywordSpan">color</span>();
+    var valids = ['#ABC', '#DEF123', '#ABCDEF12', '#01234567', '#890'];
+    st.plan(valids.length);
+    valids.forEach(function (color) {
+        v('form', { data: color }, function (err) {
+            st.equal(err, undefined);
+        });
+    });
+...</pre></li>
     </ul>
 
 
@@ -2036,7 +2379,23 @@ var reg_form = forms.create({
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return f;
+};
+
+exports.date = function (opt) {
+    var opts = assign({}, opt);
+    var f = exports.string(opts);
+    if (f.validators) {
+        f.validators.unshift(forms.validators.<span class="apidocCodeKeywordSpan">date</span>());
+    } else {
+        f.validators = [forms.validators.date()];
+    }
+    return f;
+};
+
+exports.object = function (fields, opts) {
+...</pre></li>
     </ul>
 
 
@@ -2122,7 +2481,23 @@ reg_form.toHTML();
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            '&lt;input type="text" name="fieldname" /&gt;' +
+        '&lt;/' + tag + '&gt;'
+    );
+    t.end();
+});
+
+test(tag + ' hidden label', function (t) {
+    var f = forms.create({ fieldname: forms.fields.string({ widget: forms.widgets.<span class="apidocCodeKeywordSpan">hidden</span>() }) });
+    t.equal(
+        f.toHTML(forms.render[tag]),
+        '&lt;' + tag + ' class="field"&gt;' +
+            '&lt;input type="hidden" name="fieldname" id="id_fieldname" /&gt;' +
+        '&lt;/' + tag + '&gt;'
+    );
+    t.end();
+...</pre></li>
     </ul>
 
 
@@ -2147,7 +2522,23 @@ reg_form.toHTML();
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        });
+    }
+    return text || '';
+};
+f.labelHTML = function (name, id) {
+    if (this.widget.type === 'hidden') { return ''; }
+    var forID = id === false ? false : (id || 'id_' + name);
+    return forms.widgets.<span class="apidocCodeKeywordSpan">label</span>({
+        classes: typeof this.cssClasses !== 'undefined' ? coerceArray(this.cssClasses.label) : [],
+        content: this.labelText(name, id)
+    }).toHTML(forID, f);
+};
+f.classes = function () {
+    var r = ['field'];
+    if (this.error) { r.push('error'); }
+...</pre></li>
     </ul>
 
 
@@ -2193,7 +2584,23 @@ reg_form.toHTML();
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                callback();
+            }
+        }
+    ]
+}),
+more_options: fields.array({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.<span class="apidocCodeKeywordSpan">multipleCheckbox</span>()
+}),
+even_more: fields.string({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.multipleRadio()
+}),
+and_more: fields.array({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+...</pre></li>
     </ul>
 
 
@@ -2237,7 +2644,23 @@ reg_form.toHTML();
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}),
+more_options: fields.array({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.multipleCheckbox()
+}),
+even_more: fields.string({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.<span class="apidocCodeKeywordSpan">multipleRadio</span>()
+}),
+and_more: fields.array({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.multipleSelect()
+}),
+notes: fields.string({ widget: widgets.textarea({ rows: 6 }) }),
+spam_me: fields['boolean'](),
+...</pre></li>
     </ul>
 
 
@@ -2278,7 +2701,23 @@ reg_form.toHTML();
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }),
+    even_more: fields.string({
+        choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+        widget: widgets.multipleRadio()
+    }),
+    and_more: fields.array({
+        choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+        widget: widgets.<span class="apidocCodeKeywordSpan">multipleSelect</span>()
+    }),
+    notes: fields.string({ widget: widgets.textarea({ rows: 6 }) }),
+    spam_me: fields['boolean'](),
+    nested_1: { nested_2: { nested: fields.string() } }
+});
+
+http.createServer(function (req, res) {
+...</pre></li>
     </ul>
 
 
@@ -2313,7 +2752,23 @@ reg_form.toHTML();
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    name: fields.string({ required: true, label: 'Name' }),
+    email: fields.email({ required: true, label: 'Email' }),
+    address: {
+        address1: fields.string({ required: true, label: 'Address 1' }),
+        address2: fields.string({ label: 'Address 2' }),
+        city: fields.string({ required: true, label: 'City' }),
+        state: fields.string({ required: true, label: 'State' }),
+        zip: fields.<span class="apidocCodeKeywordSpan">number</span>({ required: true, label: 'ZIP' })
+    }
+}
+});
+
+http.createServer(function (req, res) {
+reg_form.handle(req, {
+    success: function (form) {
+...</pre></li>
     </ul>
 
 
@@ -2388,7 +2843,23 @@ var reg_form = forms.create({
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+phone_2: fields.string({ validators: [validators.requiresFieldIfEmpty('phone_1')] }),
+options: fields.string({
+    choices: {
+        one: 'option one',
+        two: 'option two',
+        three: 'option three'
+    },
+    widget: widgets.<span class="apidocCodeKeywordSpan">select</span>(),
+    validators: [
+        function (form, field, callback) {
+            if (field.data === 'two') {
+                callback('two?! are you crazy?!');
+            } else {
+                callback();
+            }
+...</pre></li>
     </ul>
 
 
@@ -2423,7 +2894,23 @@ var reg_form = forms.create({
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    f.validators = [forms.validators.email()];
+}
+return f;
+};
+
+exports.tel = function (opt) {
+var opts = assign({}, opt);
+if (!opts.widget) { opts.widget = forms.widgets.<span class="apidocCodeKeywordSpan">tel</span>(opts.attrs || {}); }
+return exports.string(opts);
+};
+
+exports.password = function (opt) {
+var opts = assign({}, opt);
+var f = exports.string(opts);
+f.widget = opts.widget || forms.widgets.password(opts.attrs || {});
+...</pre></li>
     </ul>
 
 
@@ -2506,7 +2993,23 @@ description: fields.string({
     };
     return w;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.multipleRadio()
+}),
+and_more: fields.array({
+    choices: { one: 'item 1', two: 'item 2', three: 'item 3' },
+    widget: widgets.multipleSelect()
+}),
+notes: fields.string({ widget: widgets.<span class="apidocCodeKeywordSpan">textarea</span>({ rows: 6 }) }),
+spam_me: fields['boolean'](),
+nested_1: { nested_2: { nested: fields.string() } }
+});
+
+http.createServer(function (req, res) {
+complexForm.handle(req, {
+    success: function (form) {
+...</pre></li>
     </ul>
 
 
